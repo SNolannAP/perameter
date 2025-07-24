@@ -7,6 +7,9 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import LoggedIn from './screens/authenticated/LoggedIn'
 import LandingScreen from './screens/LandingScreen'
+import SendProcess from './screens/authenticated/sending/SendProcess';
+import Sending from './screens/authenticated/sending/Sending';
+import SendToNumber from './screens/authenticated/sending/SendToNumber';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +25,12 @@ const MainNavigator = () => {
           <Stack.Screen name="Register" component={RegisterScreen} />
         </>
       ) : (
-        <Stack.Screen name="LoggedIn" component={LoggedIn} />
+        <>
+          <Stack.Screen name="LoggedIn" component={LoggedIn} />
+          <Stack.Screen name="SendProcess" component={SendProcess} />
+          <Stack.Screen name="Sending" component={Sending} />
+          <Stack.Screen name="SendToNumber" component={SendToNumber} />
+        </>
       )}
     </Stack.Navigator>
   );

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { AuthContext } from '../../AuthContext';
-
 import SendIcon from '../../assets/icons/send.svg';
 import HandExtendedIcon from '../../assets/icons/hand-extended.svg';
 import BankTransferIcon from '../../assets/icons/bank-transfer.svg';
@@ -9,6 +8,7 @@ import MoreIcon from '../../assets/icons/dots-horizontal.svg';
 import NotificationIcon from '../../assets/icons/checkbox-blank-badge.svg';
 import QRCodeScanIcon from '../../assets/icons/qrcode-scan.svg';
 import SettingsIcon from '../../assets/icons/cogs.svg';
+import { useNavigation } from '@react-navigation/native';
 
 const transactions = [
   { id: 1, type: 'Received', amount: 1500, date: '2024-06-01', from: 'Juan Dela Cruz' },
@@ -26,6 +26,7 @@ const getAmountStyle = (type: string) => {
 
 const LoggedIn = () => {
   const { logout } = useContext(AuthContext);
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -37,7 +38,10 @@ const LoggedIn = () => {
 
       <View style={styles.actionsRow}>
         <View style={styles.actionItem}>
-          <TouchableOpacity style={styles.circleBtn}>
+          <TouchableOpacity
+            style={styles.circleBtn}
+            onPress={() => navigation.navigate('Sending')}
+          >
             <SendIcon width={28} height={28} color="#fff" />
           </TouchableOpacity>
           <Text style={styles.actionText}>Send</Text>
